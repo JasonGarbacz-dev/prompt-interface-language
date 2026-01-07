@@ -1,0 +1,25 @@
+Analyze_Summarize(
+    object = table,
+    audience = c_suite_external,
+    style = header_plus_text_box,
+    bullet_points = 4,
+    risk_tolerance = low
+)
+
+# Freeform input follows:
+# (This can be raw text, metadata, or SQL schema — whatever the LLM needs to process.)
+
+-- Example input block --
+
+This table contains aggregated quarterly metrics across all surgical service lines. Columns include:
+
+- `procedure_group`
+- `volume_q1`, `volume_q2`, `volume_q3`, `volume_q4`
+- `avg_margin`, `case_mix_index`, `length_of_stay`, `readmission_rate`
+
+Values are standardized across facilities. The audience is an external-facing executive team looking for summary insights, risk exposure, and directional highlights.
+
+# Notes:
+# - Inputs can be structured or unstructured.
+# - Settings and selections (audience, tone, bullet count) can be strict (defined in spec)
+#   or loosely inferred and reinforced via context.
