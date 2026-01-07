@@ -146,3 +146,5 @@ Includes:
 
 Built by Jason Garbacz  
 Focused on AI-literate tooling, reusable LLM interfaces, and systems that replace ambiguity with clarity.
+
+This format began as a thought experiment embedded in a GPT name — executiveFunction() — where I imagined prompts behaving more like composable, structured calls than vague requests. This repo is the system that evolved from that metaphor.
