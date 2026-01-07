@@ -129,6 +129,17 @@ Reference interpreter: active
 Next step: publish default parameter set for reuse across GPTs
 
 
+## 🧪 Verified Output Example
+
+See [`examples/generated/analyze_summarize_exec_brief_debug.txt`](examples/generated/analyze_summarize_exec_brief_debug.txt) for a tested control block prompt and structured GPT output using the Prompt Interpreter spec (v0.1).
+
+Includes:
+- Executive audience targeting
+- Inferred parameters
+- Debug output block with reasoning trace
+
+
+
 ---
 
 ## 📬 About
