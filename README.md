@@ -1,4 +1,6 @@
 # prompt-interface-language
+> A declarative control interface for LLMs — bridging human-readable prompts and structured automation.
+
 
 This repo showcases a declarative, reusable interface pattern for controlling LLM behavior — without relying on brittle natural language prompts or verbose JSON contracts.
 
@@ -84,6 +86,33 @@ Each includes:
 
 ---
 
+## 🧩 Architecture and Integration
+
+This repository doesn’t just define a prompt format — it defines a **specification layer** that can be added to any GPT or LLM-driven system to introduce consistent interpretive semantics.  
+The `Prompt Interface Language` acts as a **soft contract** that describes *how* prompts should be read and *how* responses should be shaped, without dictating task-specific content or model weights.
+
+### 🧱 Layered Model
+
+| Layer | Purpose | Example |
+|--------|----------|----------|
+| **Spec Layer** | Defines syntax, recognized parameters, and default behaviors. Lives in `spec/` and can be versioned independently. | `risk_tolerance = low`, `audience = c_suite_external` |
+| **Interpreter Layer** | Reads the spec and applies its semantics. This repo’s reference Custom GPT (the *Prompt Interface Language Interpreter*) serves as a test harness for validating the rules. | Ensures tone, format, and reasoning follow spec defaults. |
+| **Application Layer** | Any GPT, agent, or automation that embeds the spec in its own instructions to inherit the same semantics. | A “Report Generator” GPT or internal agent using the spec for repeatable structure. |
+
+### 🧭 Why This Matters
+
+Separating the **specification** from the **interpreter** makes this approach modular and maintainable:
+- Multiple GPTs can share one spec for consistent behavior.
+- The spec can evolve (e.g., new tone definitions) without rewriting every prompt.
+- The interpreter can be swapped or extended to suit different workflows or hosting environments.
+
+### ⚙️ Integration Patterns
+
+- **As a Custom GPT layer:** paste the contents of the spec into the “instructions” field of any GPT to instantly apply structured control-block semantics.  
+- **As a library component:** import the syntax and parameter defaults into programmatic workflows to standardize LLM behavior across pipelines.  
+- **As a governance tool:** treat the spec as a versioned contract defining communication tone, clarity, and risk tolerance for enterprise or multi-agent systems.
+
+
 ## 🚫 Not Trying to Be
 
 - A full DSL or parser  
@@ -91,6 +120,14 @@ Each includes:
 - A prompt IDE  
 
 This is a **soft contract** — meant to reduce ambiguity and increase reuse across human and machine-facing prompt interfaces.
+
+---
+
+## 🧾 Status
+Current spec: v0.1 (draft)  
+Reference interpreter: active  
+Next step: publish default parameter set for reuse across GPTs
+
 
 ---
 
