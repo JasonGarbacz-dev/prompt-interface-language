@@ -3,10 +3,10 @@
 This repo showcases a declarative, reusable interface pattern for controlling LLM behavior — without relying on brittle natural language prompts or verbose JSON contracts.
 
 It’s built for:
-- 🔁 Repeatable output structures
-- 🧑‍💼 Audience-aware communication
-- 🧭 Tone, risk, and clarity alignment
-- 🧱 Prompt reuse across workflows
+- 🔁 Repeatable output structures  
+- 🧑‍💼 Audience-aware communication  
+- 🧭 Tone, risk, and clarity alignment  
+- 🧱 Prompt reuse across workflows  
 
 ---
 
@@ -14,9 +14,9 @@ It’s built for:
 
 Most prompt design is fragile:
 
-- Natural language is too vague
-- JSON schemas are too rigid (and un-GPT-friendly)
-- System messages don’t scale across changing tasks
+- Natural language is too vague  
+- JSON schemas are too rigid (and un-GPT-friendly)  
+- System messages don’t scale across changing tasks  
 
 This pattern introduces a **soft specification language** — think: Python-like, function-call format — to express LLM instructions with clarity and structure.
 
@@ -40,47 +40,55 @@ Then follows freeform input (e.g. pasted notes, SQL, or source data).
 
 The control block:
 
-- Defines intent
-- Locks tone and format
-- Prevents ambiguity
-- Supports defaults via system instructions or preloaded context
+- Defines intent  
+- Locks tone and format  
+- Prevents ambiguity  
+- Supports flexible input while allowing defaults to fill in gaps  
+
+---
+
+## 📄 How the Format Is Interpreted
+
+The control block is interpreted by the LLM using a simple rule set and a configurable set of parameter defaults.
+
+To understand how this works behind the scenes:
+
+- See [`spec/syntax_rules.md`](spec/syntax_rules.md) for how the control block is structured  
+- See [`spec/parameter_defaults.md`](spec/parameter_defaults.md) for default behaviors and recognized parameter values  
+
+These two documents together form the **soft spec** that guides both human and machine interaction.
+
+If you're using this inside a Custom GPT or API workflow, the contents of these specs can be combined into system instructions.
 
 ---
 
 ## 🧩 Examples
 
-- `examples/Analyze_Summarize.txt`
-- `examples/Explain_Transform.txt`
+- `examples/Analyze_Summarize.txt`  
+- `examples/Explain_Transform.txt`  
 - `examples/RedTeam_Questioning.txt`
 
-Each file includes:
-- Control block (top of prompt)
-- Input body
-- Targeted output structure
+Each includes:
+- A control block (top of prompt)  
+- A task body  
+- A formatting or tone behavior implied by the control structure  
 
 ---
 
 ## 🧠 Design Principles
 
-- Keyword arguments only — no positional ambiguity
-- Defaults defined in spec, not per prompt
-- Reusable across GPTs, tools, and environments
-- Designed for *operational clarity*, not prompt novelty
-
----
-
-## 📜 Spec Docs
-
-- `spec/syntax_rules.md` — Language constraints
-- `spec/default_parameters.md` — Available config options
+- Keyword arguments only — no positional ambiguity  
+- Defaults are not prompt-specific — they’re defined in the spec  
+- Composable across tools and teams  
+- Designed for *operational clarity*, not prompt novelty  
 
 ---
 
 ## 🚫 Not Trying to Be
 
-- A full DSL or parser
-- A code execution layer
-- A prompt IDE
+- A full DSL or parser  
+- A code execution layer  
+- A prompt IDE  
 
 This is a **soft contract** — meant to reduce ambiguity and increase reuse across human and machine-facing prompt interfaces.
 
